@@ -65,7 +65,13 @@ class FileStorage:
         :return: number of instances
         """
 
-        return len(self.all(cls))
+        if cls:
+            return len(self.all(cls))
+        else:
+            total_count = 0
+            for class_name in self.CNC:
+                total_count += len(self.all(class_name))
+            return total_count
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
