@@ -79,7 +79,14 @@ class DBStorage:
         :param cls: class name
         :return: count of instances of a class
         """
-        return len(self.all(cls))
+        if cls:
+            return len(self.all(cls))
+        else:
+            total_count = 0
+            for class_name in self.CNC:
+                if class_name != 'BaseModel':
+                    total_count += len(self.all(class_name))
+            return total_count
 
     def save(self):
         """ commits all changes of current database session """
