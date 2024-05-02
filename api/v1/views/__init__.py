@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-import new files
+import new file
 """
 
 from flask import Blueprint
